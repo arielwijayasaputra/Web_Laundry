@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pemesanan WashUp Laundry</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+    <header class="page-header">
+        <span class="logo-icon">👕</span>
+        <h1>Pemesanan WashUp Laundry</h1>
+        <p class="subtitle">Layanan Cuci Profesional &amp; Terpercaya</p>
+        <div class="profile-bar">
+            <span>🏪 <strong>WashUp Laundry</strong></span>
+            <span>📍 Jl. Diponegoro 17</span>
+            <span>📞 085123456789</span>
+            <span>✉️ washuplaundry@gmail.com</span>
+        </div>
+    </header>
+
+    <div class="form-wrap">
+        <form method="POST" action="proses_pesanan.php">
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="badge">A</span> Data Pelanggan
+                </div>
+                <div class="grid-2">
+
+                    <div class="field">
+                        <label for="nama">Nama Lengkap <span class="req">*</span></label>
+                        <input type="text" id="nama" name="nama" placeholder="Masukkan nama lengkap" required />
+                    </div>
+
+                    <div class="field">
+                        <label for="telepon">Nomor Telepon <span class="req">*</span></label>
+                        <input type="text" id="telepon" name="telepon" placeholder="08xxxxxxxxxx"
+                            pattern="08[0-9]{8,11}" required />
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email <span class="req">*</span></label>
+                        <input type="email" id="email" name="email" placeholder="email@contoh.com" required />
+                    </div>
+
+                    <div class="field col-span-2">
+                        <label for="alamat">Alamat Lengkap <span class="req">*</span></label>
+                        <textarea id="alamat" name="alamat"
+                            placeholder="Jalan, nomor rumah, RT/RW, kelurahan, kecamatan, kota..." required></textarea>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="badge">B</span> Detail Pesanan
+                </div>
+                <div class="grid-2">
+
+                    <div class="field">
+                        <label for="jenis_layanan">Jenis Layanan <span class="req">*</span></label>
+                        <select id="jenis_layanan" name="jenis_layanan" required>
+                            <option value="">— Pilih Layanan —</option>
+                            <option value="dry_clean">Cuci Kering (Dry Clean) — Rp 3.000/kg</option>
+                            <option value="cuci_lipat">Cuci Lipat (Wash &amp; Fold) — Rp 5.000/kg</option>
+                            <option value="cuci_setrika">Cuci Setrika (Wash &amp; Iron) — Rp 6.000/kg</option>
+                            <option value="per_piece">Cuci Satuan (Per Piece) — Rp 4.000/item</option>
+                            <option value="sepatu">Laundry Sepatu — Rp 25.000/pasang</option>
+                            <option value="karpet">Laundry Karpet — Rp 30.000/m²</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="jumlah">Jumlah (kg / item / m²) <span class="req">*</span></label>
+                        <input type="number" id="jumlah" name="jumlah" min="0.5" step="0.1" placeholder="0" required />
+                        <span class="hint">Sesuaikan satuan dengan jenis layanan yang dipilih</span>
+                    </div>
+
+                    <div class="field col-span-2">
+                        <label for="catatan">Catatan Tambahan</label>
+                        <textarea id="catatan" name="catatan"
+                            placeholder="Pesan khusus, kondisi pakaian, atau hal lain yang perlu diperhatikan..."></textarea>
+                    </div>
+
+                </div>
+                <input type="hidden" name="tgl_masuk" id="tgl_masuk" />
+                <input type="hidden" name="tgl_ambil" id="tgl_ambil" />
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="badge">C</span> Pilihan Tambahan
+                </div>
+                <div class="two-col">
+
+                    <div class="sub-field" id="opsi-pewangi">
+                        <label>Pewangi <span class="sub-note">(boleh pilih lebih dari satu, biaya menyesuaikan satuan
+                                layanan)</span></label>
+                        <div class="check-group">
+                            <label class="check-wrap">
+                                <input type="checkbox" name="pewangi[]" value="Lavender" />
+                                <span>Lavender 🌿</span>
+                            </label>
+                            <label class="check-wrap">
+                                <input type="checkbox" name="pewangi[]" value="Sakura" />
+                                <span>Sakura 🌸</span>
+                            </label>
+                            <label class="check-wrap">
+                                <input type="checkbox" name="pewangi[]" value="Lily" />
+                                <span>Lily 🌺</span>
+                            </label>
+                            <label class="check-wrap">
+                                <input type="checkbox" name="pewangi[]" value="Citrus" />
+                                <span>Citrus 🍋</span>
+                            </label>
+                            <label class="check-wrap">
+                                <input type="checkbox" name="pewangi[]" value="Ocean Breeze" />
+                                <span>Ocean Breeze 🌊</span>
+                            </label>
+                            <label class="check-wrap">
+                                <input type="checkbox" name="pewangi[]" value="Hypoallergenic" />
+                                <span>Hypoallergenic (Tanpa Aroma) 🤍</span>
+                            </label>
+                            <label class="check-wrap">
+                                <input type="checkbox" name="pewangi[]" value="Tanpa Pewangi" />
+                                <span>Tanpa Pewangi 🚫</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="sub-field" id="opsi-setrika" style="margin-bottom: 20px;">
+                            <label>Setrika Khusus <span class="sub-note">(+Rp 5.000/kg)</span></label>
+                            <div class="radio-group">
+                                <label class="radio-wrap">
+                                    <input type="radio" name="setrika_khusus" value="ya" />
+                                    <span>Ya</span>
+                                </label>
+                                <label class="radio-wrap">
+                                    <input type="radio" name="setrika_khusus" value="tidak" checked />
+                                    <span>Tidak</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="sub-field">
+                            <label>Pengiriman</label>
+                            <div class="radio-group">
+                                <label class="radio-wrap">
+                                    <input type="radio" name="pengiriman" value="ambil_sendiri" checked />
+                                    <span>Ambil Sendiri di Toko</span>
+                                </label>
+                                <label class="radio-wrap">
+                                    <input type="radio" name="pengiriman" value="delivery" />
+                                    <span>🚗 Antar ke Alamat (+Rp 5.000)</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="sub-field" style="margin-top: 20px; grid-column: 1;">
+                            <label>Layanan Express</label>
+                            <div class="radio-group">
+                                <label class="radio-wrap">
+                                    <input type="radio" name="express" value="tidak" checked />
+                                    <span>Tidak (Reguler)</span>
+                                </label>
+                                <label class="radio-wrap">
+                                    <input type="radio" name="express" value="besok" />
+                                    <span>Express Besok (+Rp 5.000)</span>
+                                </label>
+                                <label class="radio-wrap">
+                                    <input type="radio" name="express" value="hari_sama" />
+                                    <span>Express Same Day (+Rp 15.000)</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="badge">D</span> Ringkasan Pembayaran
+                </div>
+                <div class="summary-box">
+                    <div class="total-label">Total Pembayaran</div>
+                    <div class="summary-info">
+                        <div>• Harga layanan sesuai jenis &amp; jumlah yang dipilih</div>
+                        <div>• Biaya pewangi: +Rp 1.000/item | +Rp 2.000/kg | +Rp 3.000/pasang | +Rp 4.000/m² (jika
+                            dipilih)</div>
+                        <div>• Setrika khusus: +Rp 5.000/kg (jika dipilih)</div>
+                        <div>• Pengiriman ke alamat: +Rp 5.000 (jika dipilih)</div>
+                        <div>• Layanan express: +Rp 5.000 diambil besok / +Rp 15.000 diambil dihari yang sama</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <div class="section-title">
+                    <span class="badge">E</span> Metode Pembayaran
+                </div>
+                <div class="grid-2">
+
+                    <div class="field">
+                        <label for="metode_bayar">Pilih Metode Pembayaran <span class="req">*</span></label>
+                        <select id="metode_bayar" name="metode_bayar" required>
+                            <option value="">— Pilih Metode —</option>
+                            <option value="tunai">💵 Tunai (Cash)</option>
+                            <option value="transfer">🏦 Transfer Bank</option>
+                            <option value="ewallet">📱 E-Wallet (OVO, GoPay, Dana)</option>
+                            <option value="qris">⬛ QRIS</option>
+                        </select>
+                    </div>
+
+                    <div class="field" style="justify-content: flex-end;">
+                        <span class="payment-detail-label" id="label-detail-bayar">Detail Pembayaran</span>
+                        <input type="text" id="no_rekening" name="no_rekening"
+                            placeholder="Nomor Rekening (jika Transfer Bank)" />
+                        <input type="text" id="id_ewallet" name="id_ewallet"
+                            placeholder="ID E-Wallet (jika OVO / GoPay / Dana)" style="margin-top: 8px;" />
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="btn-group">
+                <button type="reset" class="btn btn-secondary">🔄 Ulangi</button>
+                <button type="submit" class="btn btn-primary">🧺 Pesan Sekarang</button>
+            </div>
+
+        </form>
+    </div>
+
+    <script>
+        function updateTglAmbil() {
+            const express = document.querySelector('input[name="express"]:checked')?.value ?? 'tidak';
+            document.getElementById('tgl_masuk').value = new Date().toISOString().split('T')[0];
+            const base = new Date();
+            if (express === 'hari_sama') {
+                base.setDate(base.getDate());
+            } else if (express === 'besok') {
+                base.setDate(base.getDate() + 1);
+            } else {
+                base.setDate(base.getDate() + 4);
+            }
+            document.getElementById('tgl_ambil').value = base.toISOString().split('T')[0];
+        }
+
+        document.querySelectorAll('input[name="express"]').forEach(r => {
+            r.addEventListener('change', updateTglAmbil);
+        });
+
+        updateTglAmbil();
+
+        const layananKg = ['dry_clean', 'cuci_lipat', 'cuci_setrika'];
+
+        function toggleOpsiKg() {
+            const val = document.getElementById('jenis_layanan').value;
+            const isKg = layananKg.includes(val);
+            const adaLayanan = val !== '';
+            document.getElementById('opsi-pewangi').style.display = adaLayanan ? '' : 'none';
+            document.getElementById('opsi-setrika').style.display = isKg ? '' : 'none';
+        }
+
+        document.getElementById('jenis_layanan').addEventListener('change', toggleOpsiKg);
+        toggleOpsiKg();
+
+        const metode = document.getElementById('metode_bayar');
+        const inputRekening = document.getElementById('no_rekening');
+        const inputEwallet = document.getElementById('id_ewallet');
+
+        function toggleDetailBayar() {
+            const val = metode.value;
+            const labelDetail = document.getElementById('label-detail-bayar');
+            inputRekening.required = val === 'transfer';
+            inputEwallet.required = val === 'ewallet';
+            inputRekening.style.display = val === 'transfer' || val === '' ? '' : 'none';
+            inputEwallet.style.display = val === 'ewallet' || val === '' ? '' : 'none';
+            labelDetail.style.display = (val === 'tunai' || val === 'qris') ? 'none' : '';
+        }
+
+        metode.addEventListener('change', toggleDetailBayar);
+        toggleDetailBayar();
+    </script>
+
+</body>
+
+</html>
